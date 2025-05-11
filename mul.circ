@@ -90,9 +90,8 @@ end TCL_Generic;&#13;
       <a name="valign" val="base"/>
     </tool>
   </lib>
-  <lib desc="file#..\CSADD.circ" name="9"/>
+  <lib desc="file#CSADD.circ" name="9"/>
   <lib desc="file#C:\Users\user\Downloads\theTCMP.circ" name="10"/>
-  <lib desc="file#C:\Users\user\Desktop\7-segment-display-driver.circ" name="11"/>
   <main name="main"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
@@ -444,13 +443,53 @@ end TCL_Generic;&#13;
     <wire from="(1300,950)" to="(1330,950)"/>
     <wire from="(1450,870)" to="(1470,870)"/>
     <wire from="(1250,1310)" to="(1270,1310)"/>
-    <comp lib="1" loc="(490,310)" name="AND Gate">
+    <comp lib="1" loc="(760,310)" name="AND Gate">
       <a name="facing" val="south"/>
     </comp>
+    <comp loc="(160,200)" name="ciso"/>
+    <comp lib="5" loc="(1430,900)" name="7-Segment Display"/>
+    <comp lib="0" loc="(80,640)" name="Clock">
+      <a name="label" val="clk"/>
+    </comp>
+    <comp lib="0" loc="(1050,940)" name="Splitter">
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="4"/>
+      <a name="appear" val="legacy"/>
+    </comp>
+    <comp lib="0" loc="(80,600)" name="Pin">
+      <a name="label" val="R"/>
+    </comp>
+    <comp loc="(1590,510)" name="sipo"/>
+    <comp lib="5" loc="(1480,900)" name="7-Segment Display"/>
+    <comp lib="0" loc="(370,70)" name="Splitter">
+      <a name="facing" val="south"/>
+      <a name="fanout" val="8"/>
+      <a name="incoming" val="8"/>
+    </comp>
+    <comp lib="1" loc="(860,310)" name="AND Gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="5" loc="(1580,900)" name="7-Segment Display"/>
+    <comp lib="1" loc="(580,310)" name="AND Gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="10" loc="(290,510)" name="main"/>
+    <comp lib="9" loc="(790,510)" name="CSADD"/>
     <comp lib="1" loc="(300,310)" name="AND Gate">
       <a name="facing" val="south"/>
     </comp>
-    <comp lib="5" loc="(1530,900)" name="7-Segment Display"/>
+    <comp lib="0" loc="(1070,1330)" name="Splitter">
+      <a name="fanout" val="4"/>
+      <a name="incoming" val="4"/>
+      <a name="appear" val="legacy"/>
+    </comp>
+    <comp lib="9" loc="(1290,510)" name="CSADD"/>
+    <comp lib="1" loc="(390,310)" name="AND Gate">
+      <a name="facing" val="south"/>
+    </comp>
+    <comp lib="1" loc="(950,310)" name="AND Gate">
+      <a name="facing" val="south"/>
+    </comp>
     <comp lib="0" loc="(870,790)" name="Splitter">
       <a name="fanout" val="4"/>
       <a name="incoming" val="16"/>
@@ -471,13 +510,8 @@ end TCL_Generic;&#13;
       <a name="bit14" val="3"/>
       <a name="bit15" val="3"/>
     </comp>
-    <comp lib="5" loc="(1580,900)" name="7-Segment Display"/>
-    <comp lib="1" loc="(580,310)" name="AND Gate">
-      <a name="facing" val="south"/>
-    </comp>
-    <comp lib="9" loc="(620,510)" name="CSADD"/>
-    <comp lib="9" loc="(950,510)" name="CSADD"/>
-    <comp lib="1" loc="(760,310)" name="AND Gate">
+    <comp lib="9" loc="(450,510)" name="CSADD"/>
+    <comp lib="1" loc="(490,310)" name="AND Gate">
       <a name="facing" val="south"/>
     </comp>
     <comp lib="0" loc="(1160,1140)" name="Splitter">
@@ -485,63 +519,24 @@ end TCL_Generic;&#13;
       <a name="incoming" val="4"/>
       <a name="appear" val="legacy"/>
     </comp>
-    <comp lib="9" loc="(1460,510)" name="CSADD"/>
-    <comp lib="11" loc="(1300,1110)" name="L_7_segment_display_driver_2dbc0fd3"/>
+    <comp lib="0" loc="(80,220)" name="Pin"/>
+    <comp lib="9" loc="(1120,510)" name="CSADD"/>
     <comp lib="0" loc="(190,160)" name="Pin">
       <a name="width" val="8"/>
       <a name="label" val="X"/>
     </comp>
-    <comp lib="0" loc="(80,600)" name="Pin">
-      <a name="label" val="R"/>
-    </comp>
-    <comp lib="1" loc="(860,310)" name="AND Gate">
-      <a name="facing" val="south"/>
-    </comp>
-    <comp lib="11" loc="(1300,1290)" name="L_7_segment_display_driver_2dbc0fd3"/>
+    <comp lib="9" loc="(1460,510)" name="CSADD"/>
+    <comp lib="5" loc="(1530,900)" name="7-Segment Display"/>
     <comp lib="1" loc="(670,310)" name="AND Gate">
       <a name="facing" val="south"/>
     </comp>
-    <comp lib="11" loc="(1300,910)" name="L_7_segment_display_driver_2dbc0fd3"/>
-    <comp loc="(1590,510)" name="sipo"/>
-    <comp lib="11" loc="(1300,700)" name="L_7_segment_display_driver_2dbc0fd3"/>
-    <comp lib="0" loc="(1050,940)" name="Splitter">
-      <a name="fanout" val="4"/>
-      <a name="incoming" val="4"/>
-      <a name="appear" val="legacy"/>
-    </comp>
-    <comp lib="0" loc="(80,220)" name="Pin"/>
-    <comp lib="9" loc="(1120,510)" name="CSADD"/>
-    <comp lib="5" loc="(1430,900)" name="7-Segment Display"/>
-    <comp lib="5" loc="(1480,900)" name="7-Segment Display"/>
-    <comp lib="0" loc="(370,70)" name="Splitter">
-      <a name="facing" val="south"/>
-      <a name="fanout" val="8"/>
-      <a name="incoming" val="8"/>
-    </comp>
-    <comp lib="0" loc="(80,640)" name="Clock">
-      <a name="label" val="clk"/>
-    </comp>
-    <comp lib="9" loc="(790,510)" name="CSADD"/>
-    <comp lib="9" loc="(1290,510)" name="CSADD"/>
-    <comp lib="1" loc="(390,310)" name="AND Gate">
-      <a name="facing" val="south"/>
-    </comp>
-    <comp lib="9" loc="(450,510)" name="CSADD"/>
-    <comp lib="0" loc="(1070,1330)" name="Splitter">
-      <a name="fanout" val="4"/>
-      <a name="incoming" val="4"/>
-      <a name="appear" val="legacy"/>
-    </comp>
-    <comp lib="1" loc="(950,310)" name="AND Gate">
-      <a name="facing" val="south"/>
-    </comp>
-    <comp loc="(160,200)" name="ciso"/>
+    <comp lib="9" loc="(620,510)" name="CSADD"/>
     <comp lib="0" loc="(990,720)" name="Splitter">
       <a name="fanout" val="4"/>
       <a name="incoming" val="4"/>
       <a name="appear" val="legacy"/>
     </comp>
-    <comp lib="10" loc="(290,510)" name="main"/>
+    <comp lib="9" loc="(950,510)" name="CSADD"/>
   </circuit>
   <circuit name="ciso">
     <a name="circuit" val="ciso"/>
@@ -590,24 +585,24 @@ end TCL_Generic;&#13;
     <wire from="(570,390)" to="(650,390)"/>
     <wire from="(760,320)" to="(770,320)"/>
     <wire from="(650,320)" to="(660,320)"/>
+    <comp lib="4" loc="(490,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(580,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(770,310)" name="D Flip-Flop"/>
     <comp lib="4" loc="(270,310)" name="D Flip-Flop"/>
+    <comp lib="0" loc="(110,390)" name="Pin">
+      <a name="label" val="CLK"/>
+    </comp>
+    <comp lib="4" loc="(380,310)" name="D Flip-Flop"/>
     <comp lib="0" loc="(1190,330)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
     </comp>
-    <comp lib="4" loc="(660,310)" name="D Flip-Flop"/>
     <comp lib="0" loc="(110,320)" name="Pin">
       <a name="label" val="SI"/>
     </comp>
-    <comp lib="4" loc="(490,310)" name="D Flip-Flop"/>
-    <comp lib="0" loc="(110,390)" name="Pin">
-      <a name="label" val="CLK"/>
-    </comp>
-    <comp lib="4" loc="(580,310)" name="D Flip-Flop"/>
     <comp lib="4" loc="(970,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(770,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(380,310)" name="D Flip-Flop"/>
     <comp lib="4" loc="(880,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(660,310)" name="D Flip-Flop"/>
   </circuit>
   <circuit name="sipo">
     <a name="circuit" val="sipo"/>
@@ -748,6 +743,17 @@ end TCL_Generic;&#13;
     <wire from="(730,200)" to="(730,250)"/>
     <wire from="(340,200)" to="(340,320)"/>
     <wire from="(650,320)" to="(660,320)"/>
+    <comp lib="4" loc="(1550,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(580,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(880,310)" name="D Flip-Flop"/>
+    <comp lib="0" loc="(110,390)" name="Pin">
+      <a name="label" val="CLK"/>
+    </comp>
+    <comp lib="4" loc="(970,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(770,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(1050,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(380,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(270,310)" name="D Flip-Flop"/>
     <comp lib="4" loc="(660,310)" name="D Flip-Flop"/>
     <comp lib="0" loc="(730,110)" name="Pin">
       <a name="facing" val="west"/>
@@ -756,32 +762,21 @@ end TCL_Generic;&#13;
       <a name="label" val="product"/>
       <a name="labelloc" val="east"/>
     </comp>
-    <comp lib="4" loc="(880,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(1270,310)" name="D Flip-Flop"/>
     <comp lib="4" loc="(1750,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(1270,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(1360,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(1160,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(490,310)" name="D Flip-Flop"/>
     <comp lib="0" loc="(780,180)" name="Splitter">
       <a name="facing" val="south"/>
       <a name="fanout" val="16"/>
       <a name="incoming" val="16"/>
       <a name="appear" val="legacy"/>
     </comp>
+    <comp lib="4" loc="(1440,310)" name="D Flip-Flop"/>
+    <comp lib="4" loc="(1660,310)" name="D Flip-Flop"/>
     <comp lib="0" loc="(110,320)" name="Pin">
       <a name="label" val="SI"/>
     </comp>
-    <comp lib="4" loc="(1360,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(1160,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(270,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(970,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(770,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(1660,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(1550,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(1440,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(580,310)" name="D Flip-Flop"/>
-    <comp lib="0" loc="(110,390)" name="Pin">
-      <a name="label" val="CLK"/>
-    </comp>
-    <comp lib="4" loc="(380,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(1050,310)" name="D Flip-Flop"/>
-    <comp lib="4" loc="(490,310)" name="D Flip-Flop"/>
   </circuit>
 </project>
