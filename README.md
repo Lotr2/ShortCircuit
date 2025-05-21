@@ -90,9 +90,11 @@ The repository contains:
   - Verilog: Debugged implementation, configured XDC file, and conducted hardware testing.
   - Wrote README.
 - **Noor Elshahidi**:
-  - Logisim: Built 7-segment display driver and verified scrolling.
+  - Logisim: Built 7-segment display driver, verified scrolling, tested and debugged.
   - Verilog: Ran full system on FPGA, debugged synthesis errors, and ensured clock synchronization.
-  - Managed GitHub repository and sketched block diagram.
+  - Designed FSM and 7-segment driver.
+  - Fixed logical and syntax errors.
+  - Wrote project report.
 
 ## Conclusion
 This project successfully delivered a signed 8x8 SPM on the Basys 3 FPGA, handling signed multiplication and displaying results in decimal. Key achievements include robust Verilog design, efficient BCD conversion, and user-friendly scrolling. The project enhanced skills in FPGA design, Verilog coding, FSM implementation, and team collaboration, with Logisim and GitHub facilitating validation and coordination.
