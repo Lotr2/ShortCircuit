@@ -1,87 +1,90 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 05/18/2025 10:25:32 AM
-// Design Name: 
-// Module Name: SPM
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
 
-
-module SPM(
+module complement(
     input clk,
     input rst,
-    input [7:0] x,
-    input [7:0] y,
-    output reg done,
-    output reg[15:0] fullprod
-  // single-bit output to view waveform
+    input clr,
+    input data_in,
+    output reg data_out
 );
-// Internal registers
-reg [7:0] y_reg;
-reg [4:0] count;  // 3-bit counter from 0 to 7
-wire prod;
-reg [15:0] acc; // temporary accumulator for fullprod
 
-// Intermediate wires
-wire pp1, pp2, pp3, pp4, pp5, pp6, pp7;
-
-// Instantiating modules (chain of CSADD + TCMP)
-wire csadd_out;
-TCMP tcmp(clk, rst, x[7] & y_reg[0], pp7);
-CSADD csadd1(clk, rst, x[6] & y_reg[0], pp7, pp6);
-CSADD csadd2(clk, rst, x[5] & y_reg[0], pp6, pp5);
-CSADD csadd3(clk, rst, x[4] & y_reg[0], pp5, pp4);
-CSADD csadd4(clk, rst, x[3] & y_reg[0], pp4, pp3);
-CSADD csadd5(clk, rst, x[2] & y_reg[0], pp3, pp2);
-CSADD csadd6(clk, rst, x[1] & y_reg[0], pp2, pp1);
-CSADD csadd7(clk, rst, x[0] & y_reg[0], pp1, csadd_out);
-
-assign prod = csadd_out;  // Just observe waveform
-
-// Shift y_reg to process next bit each cycle
-always @(posedge clk or posedge rst) begin
-    if (rst) begin
-        y_reg <= y;
-        count <= 0;
-        fullprod<=0;
-        done <=0;
-        acc <= 0;
-    end 
-    else if(count==0)begin
-    y_reg<=y;
-//    fullprod <= fullprod + prod << count;
-            acc <= acc + (prod << count);
-    count<=count+1;
+    always @(posedge clk or posedge rst) begin
+        if (rst || clr) begin
+            data_out <= 1'b0;
+        end else begin
+            data_out <= data_in;
+        end
     end
-     else if(count < 15) begin
-        y_reg <= y_reg >> 1;
-//        fullprod <= fullprod + (prod << count);
-                acc <= acc + (prod << count);
-
-        count <= count + 1;
-    end
-   else if(count==15) begin
-//   fullprod <= fullprod >>2;
-           fullprod <= acc >> 2;  // do final adjustment here
-   done<=1;
-   count <= count+1;
-   end
-end
-
 endmodule
 
+module csa(
+    input clk,
+    input rst,
+    input clr,
+    input x,
+    input y,
+    output reg sum
+);
 
+    reg carry;
 
+    wire sum1, carry1;
+    assign sum1 = y ^ carry;
+    assign carry1 = y & carry;
+
+    wire sum2, carry2;
+    assign sum2 = x ^ sum1;
+    assign carry2 = x & sum1;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst || clr) begin
+            sum <= 1'b0;
+            carry <= 1'b0;
+        end else begin
+            sum <= sum2;
+            carry <= carry1 ^ carry2;
+        end
+    end
+endmodule
+
+module sipo #(parameter WIDTH = 8)(
+    input clk,
+    input rst,
+    input clr,
+    input shift_en,
+    input data_in,
+    output reg [WIDTH-1:0] q
+);
+
+    always @(posedge clk or posedge rst) begin
+        if (rst || clr)
+            q <= 0;
+        else if (shift_en)
+            q <= {data_in, q[WIDTH-1:1]};
+        else
+            q <= q;
+    end
+endmodule
+
+module spm(
+    input clk,
+    input rst,
+    input clr,
+    input [7:0] x,
+    input y,
+    output p
+);
+
+    wire [7:1] pp;
+
+    csa csa0(.clk(clk), .rst(rst), .clr(clr), .x(x[0] & y), .y(pp[1]), .sum(p));
+
+    genvar i;
+    generate
+        for (i = 1; i < 7; i = i + 1) begin
+            csa csa_inst(.clk(clk), .rst(rst), .clr(clr), .x(x[i] & y), .y(pp[i+1]), .sum(pp[i]));
+        end
+    endgenerate
+
+    complement cmp(.clk(clk), .rst(rst), .clr(clr), .data_in(x[7] & y), .data_out(pp[7]));
+endmodule
